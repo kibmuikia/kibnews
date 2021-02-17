@@ -29,7 +29,7 @@ class HomeViewModel : ViewModel() {
     fun getTopHeadlines() {
 
         val request = NewsApiBuilder.buildService(NewsApiEndPoints::class.java)
-        val call = request.getTopHeadlines()
+        val call = request.getTopHeadlines("us")
 
         call.enqueue(object : retrofit2.Callback<NewsApiResponse> {
             override fun onResponse(
