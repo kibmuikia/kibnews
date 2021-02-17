@@ -1,4 +1,4 @@
-package kib.dev.kibnews.ui.home
+package kib.dev.kibnews.ui.activities.main_activity.fragments.home
 
 import android.os.Bundle
 import android.view.LayoutInflater

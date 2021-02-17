@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="kib.dev.kibnews.ui.home.HomeFragment"
+        android:name="kib.dev.kibnews.ui.activities.main_activity.fragments.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="kib.dev.kibnews.ui.dashboard.DashboardFragment"
+        android:name="kib.dev.kibnews.ui.activities.main_activity.fragments.dashboard.DashboardFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="kib.dev.kibnews.ui.notifications.NotificationsFragment"
+        android:name="kib.dev.kibnews.ui.activities.main_activity.fragments.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
 </navigation>

@@ -53,6 +53,28 @@ dependencies {
 
     // ** Added
 
+    // sdp
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+
+    // retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.7.2'
+
+    // gson
+    implementation 'com.google.code.gson:gson:2.8.6'
+
+    // card-view
+    //implementation 'androidx.cardview:cardview:1.0.0'
+
+    // recycler-view
+    //implementation 'androidx.recyclerview:recyclerview:1.1.0'
+
+    // glide
+    //implementation 'com.github.bumptech.glide:glide:4.10.0'
+    //annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
+
+    // *&* Added
 
     // Test
     testImplementation 'junit:junit:4.13'

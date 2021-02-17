@@ -1,4 +1,4 @@
-package kib.dev.kibnews.ui.notifications
+package kib.dev.kibnews.ui.activities.main_activity.fragments.notifications
 
 import android.os.Bundle
 import android.view.LayoutInflater

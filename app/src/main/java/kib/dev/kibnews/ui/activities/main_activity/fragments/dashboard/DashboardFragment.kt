@@ -1,4 +1,4 @@
-package kib.dev.kibnews.ui.dashboard
+package kib.dev.kibnews.ui.activities.main_activity.fragments.dashboard
 
 import android.os.Bundle
 import android.view.LayoutInflater
