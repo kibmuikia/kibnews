@@ -61,7 +61,8 @@ class HomeFragment : Fragment() {
     private fun initializeListeners() {
 
         btn_frag_home_badgecount?.setOnClickListener {
-            homeViewModel.incrementBadgeCount()
+            //homeViewModel.incrementBadgeCount()
+            homeViewModel.getTopHeadlines()
         }
     }
 }

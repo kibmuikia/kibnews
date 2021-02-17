@@ -57,8 +57,8 @@ data class Article(
     val content: String?,
 )
 
-data class NewApiResponse(
+data class NewsApiResponse(
     val status: String?,
     val totalResults: Int?,
-    val articles: List<Article>,
+    val articles: List<Article>?,
 )
