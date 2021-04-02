@@ -12,6 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <meta-data android:name="io.sentry.dsn" android:value="https://c20ce5407873465280ad90eb2745433c@o563430.ingest.sentry.io/5703405" />
+
         <activity
             android:name=".ui.activities.main_activity.MainActivity"
             android:label="@string/app_name">
