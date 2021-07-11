@@ -1,6 +1,7 @@
 package kib.dev.kibnews.init
 
 import android.app.Application
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
@@ -9,9 +10,18 @@ import androidx.lifecycle.ProcessLifecycleOwner
 
 class App : Application() {
 
+    init {
+        instance = this
+    }
+
     companion object {
         val logTag = App::class.java.simpleName
         var namePackage: String? = null
+        private var instance: App? = null
+
+        fun appContext(): Context {
+            return instance!!.applicationContext
+        }
     }
 
     private var app: App = this
