@@ -1,16 +1,13 @@
 package kib.dev.kibnews.ui.activities.main_activity.fragments.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import kib.dev.kibnews.R
-import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
 
@@ -47,17 +44,16 @@ class HomeFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        //.
 
 //        val textView: TextView = rootView.findViewById(R.id.text_home)
         homeViewModel.text.observe(viewLifecycleOwner, Observer {
             //textView.text = it
-            Log.e(logTag, ": observeViewModel: homeViewModel.text.observe(: it: $it")
+            //Log.e(logTag, ": observeViewModel: homeViewModel.text.observe(: it: $it")
         })
 
         homeViewModel.badgeCount.observe(viewLifecycleOwner, Observer {
 //            text_home?.text = it.toString()
-            Log.e(logTag, ": observeViewModel: homeViewModel.badgeCount.observe(: it: $it")
+            //Log.e(logTag, ": observeViewModel: homeViewModel.badgeCount.observe(: it: $it")
         })
     }
 
