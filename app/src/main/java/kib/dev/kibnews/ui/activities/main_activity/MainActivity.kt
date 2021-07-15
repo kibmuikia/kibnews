@@ -1,14 +1,12 @@
 package kib.dev.kibnews.ui.activities.main_activity
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import io.sentry.Sentry
 import kib.dev.kibnews.R
 
 class MainActivity : AppCompatActivity() {
@@ -20,9 +18,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val packageName = applicationContext.packageName
-        Log.e(logTag, ": onCreate: init: package-name: $packageName")
-        Sentry.captureMessage("testing SDK setup");
+
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
         val navController = findNavController(R.id.nav_host_fragment)
