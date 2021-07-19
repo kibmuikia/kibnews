@@ -1,13 +1,24 @@
 package kib.dev.kibnews.ui.activities.main_activity.fragments.search
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import kib.dev.kibnews.tools.bases.BaseViewModel
 
-class SearchViewModel : ViewModel() {
+class SearchViewModel : BaseViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is Search Fragment"
+    companion object {
+        val logTag: String = SearchViewModel::class.java.simpleName
     }
-    val text: LiveData<String> = _text
+
+    val text: MutableLiveData<String> by lazy {
+        MutableLiveData<String>("This is Search Fragment")
+    }
+
+    init {
+        //.
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        //.
+    }
 }
