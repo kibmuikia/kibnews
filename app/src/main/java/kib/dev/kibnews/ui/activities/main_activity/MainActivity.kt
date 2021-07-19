@@ -2,6 +2,7 @@ package kib.dev.kibnews.ui.activities.main_activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -19,9 +20,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val navView: BottomNavigationView = findViewById(R.id.nav_view)
-
-        val navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
@@ -29,7 +27,16 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_home, R.id.navigation_search, R.id.navigation_settings
             )
         )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+        setupActionBarWithNavController(getNavController(), appBarConfiguration)
+        getBottomNavView().setupWithNavController(getNavController())
     }
-}
+
+    private fun getNavController(): NavController {
+        return findNavController(R.id.nav_host_fragment)
+    }
+
+    private fun getBottomNavView(): BottomNavigationView {
+        return findViewById(R.id.bottom_nav_view_act_main)
+    }
+
+}//: MainActivity
