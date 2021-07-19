@@ -2,15 +2,15 @@ package kib.dev.kibnews.ui.activities.main_activity.fragments.home
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import kib.dev.kibnews.api.NewsApiBuilder
 import kib.dev.kibnews.api.NewsApiEndPoints
 import kib.dev.kibnews.model.Article
 import kib.dev.kibnews.model.NewsApiResponse
+import kib.dev.kibnews.tools.bases.BaseViewModel
 import retrofit2.Call
 import retrofit2.Response
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel : BaseViewModel() {
 
     companion object {
         val logTag = HomeViewModel::class.java.simpleName
@@ -34,12 +34,13 @@ class HomeViewModel : ViewModel() {
 
         val request = NewsApiBuilder.buildService(NewsApiEndPoints::class.java)
         val call = request.getTopHeadlines("us")
-
+        setLoading(true)
         call.enqueue(object : retrofit2.Callback<NewsApiResponse> {
             override fun onResponse(
                 call: Call<NewsApiResponse>,
                 response: Response<NewsApiResponse>
             ) {
+                setLoading(false)
                 Log.e(logTag, ": getTopHeadlines: init: response: ${response.toString()}");
                 if (response.isSuccessful) {
                     val body: NewsApiResponse? = response.body()
@@ -56,6 +57,7 @@ class HomeViewModel : ViewModel() {
             }
 
             override fun onFailure(call: Call<NewsApiResponse>, t: Throwable) {
+                setLoading(false)
                 Log.e(logTag, ": getTopHeadlines-onFailure: message[ ${t.message} ]")
             }
         })

@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import kib.dev.kibnews.R
 import kib.dev.kibnews.databinding.FragmentHomeBinding
 import kib.dev.kibnews.init.App
+import kib.dev.kibnews.ui.activities.main_activity.MainActivity
 
 class HomeFragment : Fragment() {
 
@@ -47,6 +48,9 @@ class HomeFragment : Fragment() {
         viewModel.text.observe(viewLifecycleOwner, Observer {
             binding.tvFragHomeLabelCategories.text = it
             //Log.e(logTag, ": observeViewModel: homeViewModel.text.observe(: it: $it")
+        })
+        viewModel.loading.observe(viewLifecycleOwner, {
+            (activity as MainActivity).showLoading(it)
         })
         viewModel.getTopHeadlines()
     }
