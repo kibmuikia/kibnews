@@ -4,16 +4,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import kib.dev.kibnews.R
+import kib.dev.kibnews.databinding.FragmentHomeBinding
+import kib.dev.kibnews.init.App
 
 class HomeFragment : Fragment() {
 
     private val logTag: String = HomeFragment::class.java.simpleName
     private lateinit var viewModel: HomeViewModel
-    private lateinit var rootView: View
+    private lateinit var binding: FragmentHomeBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -21,21 +25,17 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
-
-        rootView = inflater.inflate(R.layout.fragment_home, container, false)
-
-        return rootView
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         observeViewModel()
         initializeListeners()
     }
 
     override fun onDestroyView() {
-        //rootView = null
         super.onDestroyView()
     }
 
@@ -44,25 +44,16 @@ class HomeFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-
-//        val textView: TextView = rootView.findViewById(R.id.text_home)
         viewModel.text.observe(viewLifecycleOwner, Observer {
-            //textView.text = it
+            binding.tvFragHomeLabelCategories.text = it
             //Log.e(logTag, ": observeViewModel: homeViewModel.text.observe(: it: $it")
-        })
-
-        viewModel.badgeCount.observe(viewLifecycleOwner, Observer {
-//            text_home?.text = it.toString()
-            //Log.e(logTag, ": observeViewModel: homeViewModel.badgeCount.observe(: it: $it")
         })
         viewModel.getTopHeadlines()
     }
 
     private fun initializeListeners() {
-
-//        btn_frag_home_badgecount?.setOnClickListener {
-//            //homeViewModel.incrementBadgeCount()
-//            homeViewModel.getTopHeadlines()
-//        }
+        binding.tvFragHomeLabelCategories.setOnClickListener {
+            Toast.makeText(App.appContext(), "Hi There", Toast.LENGTH_LONG).show()
+        }
     }
 }
