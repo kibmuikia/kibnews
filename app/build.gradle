@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 30
@@ -90,6 +91,12 @@ dependencies {
     // Chuck HTTP Interceptor
     debugImplementation "com.github.chuckerteam.chucker:library:3.5.0"
     releaseImplementation "com.github.chuckerteam.chucker:library-no-op:3.5.0"
+
+    // Room components
+    implementation "androidx.room:room-runtime:2.3.0"
+    kapt "androidx.room:room-compiler:2.3.0"
+    implementation "androidx.room:room-ktx:2.3.0"
+    androidTestImplementation "androidx.room:room-testing:2.3.0"
 
 
     // *&* Added
