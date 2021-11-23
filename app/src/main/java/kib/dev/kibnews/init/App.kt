@@ -1,40 +1,50 @@
 package kib.dev.kibnews.init
 
 import android.app.Application
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.ProcessLifecycleOwner
 
-class KibNews: Application() {
+class App : Application() {
 
-    companion object {
-        val logTag = KibNews::class.java.simpleName
-        var namePackage: String? = null
+    init {
+        instance = this
     }
 
-    private var kibNews: KibNews = this
+    companion object {
+        val logTag = App::class.java.simpleName
+        var namePackage: String? = null
+        private var instance: App? = null
+
+        fun appContext(): Context {
+            return instance!!.applicationContext
+        }
+    }
+
+    private var app: App = this
 
     class KibNewsLifeObserver : LifecycleObserver {
         @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
         fun created() {
-            Log.e(logTag, ": KibNewsLifeObserver-created-Event.ON_CREATE: called")
+            Log.e(logTag, ": AppLifeObserver-created-Event.ON_CREATE: called")
         }//: created()
 
         @OnLifecycleEvent(Lifecycle.Event.ON_START)
         fun toForeground() {
-            Log.e(logTag, ": KibNewsLifeObserver-toForeground-Event.ON_START: called")
+            Log.e(logTag, ": AppLifeObserver-toForeground-Event.ON_START: called")
         }//: toForeground
 
         @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
         fun toBackground() {
-            Log.e(logTag, ": KibNewsLifeObserver-toBackground-Event.ON_STOP: called")
+            Log.e(logTag, ": AppLifeObserver-toBackground-Event.ON_STOP: called")
         }//: toBackground
 
         @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
         fun destroyed() {
-            Log.e(logTag, ": KibNewsLifeObserver-destroyed-Event.ON_DESTROY: called")
+            Log.e(logTag, ": AppLifeObserver-destroyed-Event.ON_DESTROY: called")
         }//: destroyed()
     }//: KibNewsLifeObserver
 
@@ -42,7 +52,7 @@ class KibNews: Application() {
         super.onCreate()
         ProcessLifecycleOwner.get().lifecycle
             .addObserver(KibNewsLifeObserver())
-        namePackage = kibNews.packageName
+        namePackage = app.packageName
         Log.e(logTag, ": onCreate: called: namePackage: $namePackage")
     }//: onCreate
 
